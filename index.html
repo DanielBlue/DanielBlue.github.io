@@ -120,6 +120,39 @@
 
 
         
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
 
         <div id="switch-area" class="switch-area">
             <div class="switch-wrap">
@@ -144,6 +177,12 @@
                     </nav>
                 </section>
                 
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/6-0权限/">6.0权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WRITE-SETTING/">WRITE_SETTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
+                    </div>
+                </section>
                 
                 
                 
@@ -247,6 +286,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/6-0权限/">6.0权限</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WRITE-SETTING/">WRITE_SETTING</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
           <a href="/2017/02/18/华为6-0的WRITE-SETTING权限问题/#more">阅读全文 >></a>
@@ -307,6 +350,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
           <a href="/2017/02/18/Vitamio使用问题总结/#more">阅读全文 >></a>
@@ -357,8 +404,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>###使用RecycleView实现如下的效果<br><img src="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true" alt=""></p>
-<p>###却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决</p>
+        <p>使用RecycleView实现如下的效果</p>
+<p><img src="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true" alt=""></p>
+<p>却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决</p>
 
       
     </div>
@@ -368,6 +416,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
