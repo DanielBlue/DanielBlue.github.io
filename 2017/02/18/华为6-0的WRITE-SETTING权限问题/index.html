@@ -15,12 +15,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/archives/2017/02/index.html">
+<meta name="description" content="项目的阅读器功能中的调节亮度功能用到了WRITE_SETTING权限，崩溃了几次，解决后特此记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为6.0的WRITE_SETTING权限问题">
+<meta property="og:url" content="https://danielblue.github.io/2017/02/18/华为6-0的WRITE-SETTING权限问题/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="项目的阅读器功能中的调节亮度功能用到了WRITE_SETTING权限，崩溃了几次，解决后特此记录。">
+<meta property="og:updated_time" content="2017-02-17T14:03:27.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="华为6.0的WRITE_SETTING权限问题">
+<meta name="twitter:description" content="项目的阅读器功能中的调节亮度功能用到了WRITE_SETTING权限，崩溃了几次，解决后特此记录。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2017/2 | Maoqi&#39;s Blog</title>
+<title>华为6.0的WRITE_SETTING权限问题 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -201,110 +205,139 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-华为6-0的WRITE-SETTING权限问题" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/02/18/华为6-0的WRITE-SETTING权限问题/" class="article-date">
+      <time datetime="2017-02-17T21:56:39.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      华为6.0的WRITE_SETTING权限问题
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/华为6-0的WRITE-SETTING权限问题/" class="archive-article-date">
-      <time datetime="2017-02-17T21:56:39.000Z" itemprop="datePublished">02-17</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/华为6-0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+        <p>###今天在开发中适配华为mate8(6.0)，遇到了注册中申请，并在BaseActivity也手动申请了WRITE_SETTING，依然报权限错误。查了下资料，发现是WRITE_SETTING的权限不能自动授权，也不能运行时请求授权，只能引导用户去开启。</p>
+<p>###核心代码<br>    //6.0以上才能调用<br>    @TargetApi(23)<br>    void checkPermission(){<br>        if(!Settings.System.canWrite(this)){<br>          Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,<br>                    Uri.parse(“package:” + getPackageName()));<br>          startActivityForResult(intent, REQUEST_CODE);<br>        }<br>    }</p>
+<p>###在代码中调用checkPermission()，则需要检查当前设备的sdk版本，在低版本上直接调用会报错</p>
+<pre><code>if (Build.VERSION.SDK_INT &gt;= 23) {
+    checkPermission();
+}
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/18/Vitamio使用问题总结/">
+                    Vitamio使用问题总结
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/Vitamio使用问题总结/" class="archive-article-date">
-      <time datetime="2017-02-17T21:52:22.000Z" itemprop="datePublished">02-17</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/RecycleView点击事件错位的问题/" class="archive-article-date">
-      <time datetime="2017-02-17T21:49:10.000Z" itemprop="datePublished">02-17</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2125583';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
 
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/18/Vitamio使用问题总结/" title="下一篇: Vitamio使用问题总结">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6-0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
