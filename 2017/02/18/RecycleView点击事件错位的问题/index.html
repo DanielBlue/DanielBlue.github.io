@@ -15,12 +15,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/archives/2017/01/index.html">
+<meta name="description" content="###使用RecycleView实现如下的效果
+###却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecycleView点击事件错位的问题">
+<meta property="og:url" content="https://danielblue.github.io/2017/02/18/RecycleView点击事件错位的问题/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="###使用RecycleView实现如下的效果
+###却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决">
+<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true">
+<meta property="og:updated_time" content="2017-02-17T13:51:59.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="RecycleView点击事件错位的问题">
+<meta name="twitter:description" content="###使用RecycleView实现如下的效果
+###却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决">
+<meta name="twitter:image" content="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2017/1 | Maoqi&#39;s Blog</title>
+<title>RecycleView点击事件错位的问题 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +71,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -201,52 +210,122 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-RecycleView点击事件错位的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/01/13/article-title/" class="archive-article-date">
-      <time datetime="2017-01-12T16:52:33.000Z" itemprop="datePublished">01-12</time>
+    <div class="article-meta">
+      <a href="/2017/02/18/RecycleView点击事件错位的问题/" class="article-date">
+      <time datetime="2017-02-17T21:49:10.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/13/article-title/">article title</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RecycleView点击事件错位的问题
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
-        </div>
+        
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>###使用RecycleView实现如下的效果<br><img src="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true" alt=""></p>
+<p>###却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决</p>
 
+      
+    </div>
+    
+  </div>
+  
     
 
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2125583';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
