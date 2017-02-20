@@ -4,9 +4,64 @@
   
     
     <entry>
+      <title><![CDATA[git相关操作]]></title>
+      <url>https://danielblue.github.io/2017/02/20/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<h3 id="配置身份"><a href="#配置身份" class="headerlink" title="配置身份"></a>配置身份</h3><pre><code>git config --global user.name &quot;your name&quot;
+git config --global user.email &quot;your email&quot;
+</code></pre><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><pre><code>进入到保存文件的文件夹，
+git init创建一个git仓库
+ls -al可以查看Git本地所有的操作
+删除文件夹就可以删掉仓库
+</code></pre><h3 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h3><pre><code>git add 添加文件到缓存区(add后面加一个. 代表所有文件)
+git status 查看缓存区
+git commit -m 提交缓存区的代码&quot;Frist commit&quot;
+</code></pre><h3 id="向github提交代码"><a href="#向github提交代码" class="headerlink" title="向github提交代码"></a>向github提交代码</h3><pre><code>1.ssh -keygen -t rsa生成密钥id_rsa和公钥id_rasa.pub
+在C/用户/username/.ssh下可以找到
+
+2.将公钥添加到Github上，
+ssh -T git@github.com测试是否配对成功
+
+3.git push origin master 把本地代码推到远程master分支
+git pull origin master 把远程代码更新到本地
+git clone (ssh地址) 将远程代码克隆到本地
+
+4.git remote add name (ssh地址) 将本地仓库和远程仓库关联起来
+git remote -v查看有哪些远程仓库
+</code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><pre><code>git diff 查看代码修改的地方
+git branch 当前分支情况
+git branch name 创建name分支
+git checkout name 切换到name分支
+git checkout -b name 创建name分支，并切换
+git branch -d name 删除name分支
+git branch -D name 强制删除name
+git merge name 将name分支合并到当前分支
+</code></pre><h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><pre><code>git config --global alias.lg &quot;log --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit --date=relative&quot;    记录打印彩色
+</code></pre><h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><pre><code>git check filePath    撤销未add的修改
+git    reset HEAD    filePath    撤销已经add的修改
+git log ID -1 -p    查看ID这次操作具体修改了什么内容
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 开发工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[华为6.0的WRITE_SETTING权限问题]]></title>
-      <url>https://danielblue.github.io/2017/02/18/%E5%8D%8E%E4%B8%BA6-0%E7%9A%84WRITE-SETTING%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p>今天在开发中适配华为mate8(6.0)，遇到了注册中申请，并在BaseActivity也手动申请了WRITE_SETTING，依然报权限错误。查了下资料，发现是WRITE_SETTING的权限不能自动授权，也不能运行时请求授权，只能引导用户去开启。</p>
+      <url>https://danielblue.github.io/2017/02/18/%E5%8D%8E%E4%B8%BA6.0%E7%9A%84WRITE-SETTING%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p><excerpt in="" index="" |="" 首页摘要=""><br>今天在开发中适配华为mate8(6.0)，遇到了注册中申请，并在BaseActivity也手动申请了WRITE_SETTING，依然报权限错误。查了下资料，发现是WRITE_SETTING的权限不能自动授权，也不能运行时请求授权，只能引导用户去开启。<br><a id="more"></a></excerpt></p>
 <pre><code>核心代码
 //6.0以上才能调用
 @TargetApi(23)
@@ -21,7 +76,7 @@ void checkPermission(){
 <pre><code>if (Build.VERSION.SDK_INT &gt;= 23) {
     checkPermission();
 }
-</code></pre>]]></content>
+</code></pre><the rest="" of="" contents="" |="" 余下全文=""></the>]]></content>
       
         <categories>
             

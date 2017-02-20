@@ -15,12 +15,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/tags/Vitamio/index.html">
+<meta name="description" content="git相关操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git相关操作">
+<meta property="og:url" content="https://danielblue.github.io/2017/02/20/git相关操作/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="git相关操作">
+<meta property="og:updated_time" content="2017-02-20T01:55:16.416Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="git相关操作">
+<meta name="twitter:description" content="git相关操作">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: Vitamio | Maoqi&#39;s Blog</title>
+<title>git相关操作 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,9 +66,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -240,60 +244,174 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-git相关操作" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/Vitamio使用问题总结/" class="archive-article-date">
-      <time datetime="2017-02-17T21:52:22.000Z" itemprop="datePublished">02-17</time>
+    <div class="article-meta">
+      <a href="/2017/02/20/git相关操作/" class="article-date">
+      <time datetime="2017-02-20T09:51:06.000Z" itemprop="datePublished">2017-02-20</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git相关操作
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="配置身份"><a href="#配置身份" class="headerlink" title="配置身份"></a>配置身份</h3><pre><code>git config --global user.name &quot;your name&quot;
+git config --global user.email &quot;your email&quot;
+</code></pre><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><pre><code>进入到保存文件的文件夹，
+git init创建一个git仓库
+ls -al可以查看Git本地所有的操作
+删除文件夹就可以删掉仓库
+</code></pre><h3 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h3><pre><code>git add 添加文件到缓存区(add后面加一个. 代表所有文件)
+git status 查看缓存区
+git commit -m 提交缓存区的代码&quot;Frist commit&quot;
+</code></pre><h3 id="向github提交代码"><a href="#向github提交代码" class="headerlink" title="向github提交代码"></a>向github提交代码</h3><pre><code>1.ssh -keygen -t rsa生成密钥id_rsa和公钥id_rasa.pub
+在C/用户/username/.ssh下可以找到
 
+2.将公钥添加到Github上，
+ssh -T git@github.com测试是否配对成功
+
+3.git push origin master 把本地代码推到远程master分支
+git pull origin master 把远程代码更新到本地
+git clone (ssh地址) 将远程代码克隆到本地
+
+4.git remote add name (ssh地址) 将本地仓库和远程仓库关联起来
+git remote -v查看有哪些远程仓库
+</code></pre><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><pre><code>git diff 查看代码修改的地方
+git branch 当前分支情况
+git branch name 创建name分支
+git checkout name 切换到name分支
+git checkout -b name 创建name分支，并切换
+git branch -d name 删除name分支
+git branch -D name 强制删除name
+git merge name 将name分支合并到当前分支
+</code></pre><h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><pre><code>git config --global alias.lg &quot;log --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit --date=relative&quot;    记录打印彩色
+</code></pre><h3 id="撤销未提交的修改"><a href="#撤销未提交的修改" class="headerlink" title="撤销未提交的修改"></a>撤销未提交的修改</h3><pre><code>git check filePath    撤销未add的修改
+git    reset HEAD    filePath    撤销已经add的修改
+git log ID -1 -p    查看ID这次操作具体修改了什么内容
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
     
 
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">
+                    华为6.0的WRITE_SETTING权限问题
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置身份"><span class="toc-number">1.</span> <span class="toc-text">配置身份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建仓库"><span class="toc-number">2.</span> <span class="toc-text">创建仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交代码"><span class="toc-number">3.</span> <span class="toc-text">提交代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向github提交代码"><span class="toc-number">4.</span> <span class="toc-text">向github提交代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">5.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进阶"><span class="toc-number">6.</span> <span class="toc-text">进阶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销未提交的修改"><span class="toc-number">7.</span> <span class="toc-text">撤销未提交的修改</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2125583';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/" title="下一篇: 华为6.0的WRITE_SETTING权限问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
