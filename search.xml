@@ -6,10 +6,19 @@
     <entry>
       <title><![CDATA[AndroidAnnotation注解框架的配置]]></title>
       <url>https://danielblue.github.io/2017/03/10/AndroidAnnotation%E6%B3%A8%E8%A7%A3%E6%A1%86%E6%9E%B6%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<h3 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h3><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true" alt=""></p>
-<p>然后打开app目录下的build.gradle，添加<code>apply plugin: &#39;android-apt&#39;</code><br><code>def AAVersion = &#39;4.0.0&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app1.jpg?raw=true" alt=""></p>
-<p>然后在<code>dependencies</code>中加入<code>apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;</code><br><code>compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true" alt="">，然后sync即可。</p>
-<h3 id="关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><a href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑" class="headerlink" title="关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑"></a>关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</h3><p>之前遇到将项目转到AS后，编译无法自动生成带<code>_</code>的文件，后来才发现是eclipse使用的AndroidAnnotation的版本和Android Studio的使用的版本不一致，更换后即完美运行。</p>
+      <content type="html"><![CDATA[<h3 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h3><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加</p>
+<pre><code>classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.4&apos;
+</code></pre><p>如下图<br><img src="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true" alt=""></p>
+<p>然后打开app目录下的build.gradle，添加</p>
+<pre><code>apply plugin: &apos;android-apt&apos;
+def AAVersion = &apos;4.0.0&apos;
+</code></pre><p>如下图<br><img src="https://github.com/DanielBlue/img/blob/master/app1.jpg?raw=true" alt=""></p>
+<p>然后在<code>dependencies</code>中加入</p>
+<pre><code>apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;
+compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
+</code></pre><p>如下图<br><img src="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true" alt=""></p>
+<p>然后sync即可。<br><br></p>
+<h3 id="关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><a href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑" class="headerlink" title="关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑"></a>关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</h3><p>  <br>之前遇到将项目转到AS后，编译无法自动在debug生成<code>_</code>文件，后来才发现是eclipse使用的AndroidAnnotation的版本和Android Studio的使用的版本不一致，更换后即完美运行。</p>
 ]]></content>
       
         <categories>
