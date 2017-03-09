@@ -21,14 +21,14 @@
 <meta property="og:url" content="https://danielblue.github.io/2017/03/10/AndroidAnnotation注解框架的配置/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
 <meta property="og:description" content="Android Studio中AndroidAnnotation的正确配置以及eclipse转Android Studio时的坑">
-<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/project.jpg">
-<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app1.jpg">
-<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app2.jpg">
-<meta property="og:updated_time" content="2017-03-09T11:54:47.132Z">
+<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true">
+<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app1.jpg?raw=true">
+<meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true">
+<meta property="og:updated_time" content="2017-03-09T12:06:54.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidAnnotation注解框架的配置">
 <meta name="twitter:description" content="Android Studio中AndroidAnnotation的正确配置以及eclipse转Android Studio时的坑">
-<meta name="twitter:image" content="https://github.com/DanielBlue/img/blob/master/project.jpg">
+<meta name="twitter:image" content="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -292,9 +292,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h3><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/project.jpg" alt=""></p>
-<p>然后打开app目录下的build.gradle，添加<code>apply plugin: &#39;android-apt&#39;</code><br><code>def AAVersion = &#39;4.0.0&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app1.jpg" alt=""></p>
-<p>然后在<code>dependencies</code>中加入<code>apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;</code><br><code>compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app2.jpg" alt="">，然后sync即可。</p>
+        <h3 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h3><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加<code>classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true" alt=""></p>
+<p>然后打开app目录下的build.gradle，添加<code>apply plugin: &#39;android-apt&#39;</code><br><code>def AAVersion = &#39;4.0.0&#39;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app1.jpg?raw=true" alt=""></p>
+<p>然后在<code>dependencies</code>中加入<code>apt &quot;org.androidannotations:androidannotations:$AAVersion&quot;</code><br><code>compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;</code>，如下图<img src="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true" alt="">，然后sync即可。</p>
 <h3 id="关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><a href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑" class="headerlink" title="关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑"></a>关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</h3><p>之前遇到将项目转到AS后，编译无法自动生成带<code>_</code>的文件，后来才发现是eclipse使用的AndroidAnnotation的版本和Android Studio的使用的版本不一致，更换后即完美运行。</p>
 
       
