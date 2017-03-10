@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true">
 <meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app1.jpg?raw=true">
 <meta property="og:image" content="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true">
-<meta property="og:updated_time" content="2017-03-09T13:02:12.015Z">
+<meta property="og:updated_time" content="2017-03-10T03:54:02.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidAnnotation注解框架的配置">
 <meta name="twitter:description" content="Android Studio中AndroidAnnotation的正确配置以及eclipse转Android Studio时的坑">
@@ -292,7 +292,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h3><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加</p>
+        <h1 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h1><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加</p>
 <pre><code>classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.4&apos;
 </code></pre><p>如下图<br><img src="https://github.com/DanielBlue/img/blob/master/project.jpg?raw=true" alt=""></p>
 <p>然后打开app目录下的build.gradle，添加</p>
@@ -304,7 +304,7 @@ def AAVersion = &apos;4.0.0&apos;
 compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
 </code></pre><p>如下图<br><img src="https://github.com/DanielBlue/img/blob/master/app2.jpg?raw=true" alt=""></p>
 <p>然后sync即可。<br><br></p>
-<h3 id="关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><a href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑" class="headerlink" title="关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑"></a>关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</h3><p>  <br>之前遇到将项目转到AS后，编译无法自动在debug生成<code>_</code>文件，后来才发现是eclipse使用的AndroidAnnotation的版本和Android Studio的使用的版本不一致，更换后即完美运行。</p>
+<h1 id="关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><a href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑" class="headerlink" title="关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑"></a>关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</h1><p>  <br>之前遇到将项目转到AS后，编译无法自动在debug生成<code>_</code>文件，后来才发现是eclipse使用的AndroidAnnotation的版本和Android Studio的使用的版本不一致，更换后即完美运行。</p>
 
       
     </div>
@@ -331,7 +331,7 @@ compile &quot;org.androidannotations:androidannotations-api:$AAVersion&quot;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Studio中配置AndroidAnnotation"><span class="toc-number">1.</span> <span class="toc-text">Android Studio中配置AndroidAnnotation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><span class="toc-number">2.</span> <span class="toc-text">关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-Studio中配置AndroidAnnotation"><span class="toc-number">1.</span> <span class="toc-text">Android Studio中配置AndroidAnnotation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于eclipse中用到AndroidAnnotation的项目转到Android-Studio的坑"><span class="toc-number">2.</span> <span class="toc-text">关于eclipse中用到AndroidAnnotation的项目转到Android Studio的坑</span></a></li></ol>
         
     </div>
     <style>
