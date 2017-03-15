@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[Android Stduio实用插件]]></title>
+      <url>https://danielblue.github.io/2017/03/16/Android-Stduio%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<h2 id="Android-Stduio实用插件"><a href="#Android-Stduio实用插件" class="headerlink" title="Android Stduio实用插件"></a>Android Stduio实用插件</h2><ol>
+<li>GsonFormat：将服务器端返回的Json数据直接生成相应的实体类，这个绝对是神器。</li>
+<li>Android Parcelable Code Generator：Android中的序列化有两种方式，分别是实现Serializable接口和Parcelable接口，但在Android中是推荐使用Parcelable，有了这个插件就比较容易了。</li>
+<li>Android Postfix Completion：将你想要Toast或Log打印的信息使用X.log或X.toast自动生成代码。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android Studio插件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[AndroidAnnotation注解框架的配置]]></title>
       <url>https://danielblue.github.io/2017/03/10/AndroidAnnotation%E6%B3%A8%E8%A7%A3%E6%A1%86%E6%9E%B6%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h2 id="Android-Studio中配置AndroidAnnotation"><a href="#Android-Studio中配置AndroidAnnotation" class="headerlink" title="Android Studio中配置AndroidAnnotation"></a>Android Studio中配置AndroidAnnotation</h2><p>首先在打开project目录下的build.gradle，在<code>dependencies</code>中添加</p>
