@@ -5,11 +5,29 @@
     
     <entry>
       <title><![CDATA[Android Stduio实用插件]]></title>
-      <url>https://danielblue.github.io/2017/03/16/Android-Stduio%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+      <url>https://danielblue.github.io/2017/03/16/AndroidStduio%E6%8F%92%E4%BB%B6,Windows%E5%B7%A5%E5%85%B7%E5%92%8CChrome%E6%8F%92%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h2 id="Android-Stduio实用插件"><a href="#Android-Stduio实用插件" class="headerlink" title="Android Stduio实用插件"></a>Android Stduio实用插件</h2><ol>
-<li>GsonFormat：将服务器端返回的Json数据直接生成相应的实体类，这个绝对是神器。</li>
-<li>Android Parcelable Code Generator：Android中的序列化有两种方式，分别是实现Serializable接口和Parcelable接口，但在Android中是推荐使用Parcelable，有了这个插件就比较容易了。</li>
-<li>Android Postfix Completion：将你想要Toast或Log打印的信息使用X.log或X.toast自动生成代码。</li>
+<li><p>GsonFormat：将服务器端返回的Json数据直接生成相应的实体类，这个绝对是神器。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GsonFormat.gif" alt=""></p>
+</li>
+<li><p>Android Parcelable Code Generator：Android中的序列化有两种方式，分别是实现Serializable接口和Parcelable接口，但在Android中是推荐使用Parcelable，有了这个插件就比较容易了。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Parcelable.gif" alt=""></p>
+</li>
+<li><p>Android Postfix Completion：将你想要Toast或Log打印的信息使用X.log或X.toast自动生成代码。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Android%20Postfix%20Completion.gif" alt=""></p>
+</li>
+</ol>
+<h2 id="Windows工具"><a href="#Windows工具" class="headerlink" title="Windows工具"></a>Windows工具</h2><ol>
+<li>HiJson:格式化Json字符串的工具  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/HiJson.png" alt=""></li>
+<li>Fiddler:抓接口的工具  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Fiddler.jpg" alt=""></li>
+<li>MarkdownPad:md文档编辑器  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/MarkdownPad.jpg" alt=""></li>
+<li>LICEcap:录屏软件  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/LICEcap.jpg" alt=""></li>
+<li>SQLite Expert Professional:查看SQLite数据库结构的工具  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/SQLite%20Expert%20Professional.jpg" alt=""></li>
+<li>ColorPix:颜色拾取器  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/ColorPix.jpg" alt=""></li>
+</ol>
+<h2 id="Chrome插件"><a href="#Chrome插件" class="headerlink" title="Chrome插件"></a>Chrome插件</h2><ol>
+<li>JSONview:当前页面如果是JSON数据，则会自动格式化  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/JSONview.jpg" alt=""></li>
+<li>Octotree:阅读Github时，会在浏览器左侧生成当前项目的目录结构图  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Octotree.jpg" alt=""></li>
+<li>OneTab:一键回收保存当前所有页面，有时候打开很多页面比较占内存，但是之后可能有用。就可以用这个。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/One Tab.jpg" alt=""></li>
+<li>Postman:可以模拟HTTP请求，强烈推荐  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/PostMan.jpg" alt=""></li>
+<li>Vysor:将手机屏幕投影到电脑上操作，使用真机开发时，方便很多。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Vysor.jpg" alt=""></li>
 </ol>
 ]]></content>
       
