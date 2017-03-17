@@ -15,16 +15,12 @@
 
 
 
-<meta name="description" content="最近公司项目要加视频播放功能，查了一些资料，也踩了不少坑，终于搞定。写到博客里，希望能帮到一些人。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vitamio使用问题总结">
-<meta property="og:url" content="https://danielblue.github.io/2017/02/18/Vitamio使用问题总结/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maoqi's Blog">
+<meta property="og:url" content="https://danielblue.github.io/tags/Ubuntu/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
-<meta property="og:description" content="最近公司项目要加视频播放功能，查了一些资料，也踩了不少坑，终于搞定。写到博客里，希望能帮到一些人。">
-<meta property="og:updated_time" content="2017-03-10T04:01:35.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vitamio使用问题总结">
-<meta name="twitter:description" content="最近公司项目要加视频播放功能，查了一些资料，也踩了不少坑，终于搞定。写到博客里，希望能帮到一些人。">
+<meta name="twitter:title" content="Maoqi's Blog">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +52,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Vitamio使用问题总结 | Maoqi&#39;s Blog</title>
+<title>Tag: Ubuntu | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,9 +62,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -244,178 +240,60 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Vitamio使用问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2017/02/18/Vitamio使用问题总结/" class="article-date">
-      <time datetime="2017-02-17T21:52:22.000Z" itemprop="datePublished">2017-02-17</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2017/03/17/Ubuntu下配置Android开发环境/" class="archive-article-date">
+      <time datetime="2017-03-17T12:25:46.000Z" itemprop="datePublished">03-17</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Vitamio使用问题总结
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-archive">
+          
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
     </div>
 
 
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
           
-        <h2 id="Vitamio使用问题总结"><a href="#Vitamio使用问题总结" class="headerlink" title="Vitamio使用问题总结"></a>Vitamio使用问题总结</h2><h3 id="1-横竖屏切换-视频不重新加载"><a href="#1-横竖屏切换-视频不重新加载" class="headerlink" title="1.横竖屏切换,视频不重新加载"></a>1.横竖屏切换,视频不重新加载</h3><pre><code>首先要让activity在切屏时不重新走生命周期
-在manifest中配置actiovity，android:configChanges=&quot;keyboardHidden|orientation|screenSize&quot;,
-然后在Activity中重写onConfigurationChanged()方法。
-
-@Override
-public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    if (CONFIGURATION_TYPE == TYPE_PORTRAIT) {
-        //竖屏切横屏逻辑处理            
-        turn2Landscape();
-    } else if (CONFIGURATION_TYPE == TYPE_LANDSCAPE) {
-        //横屏切竖屏逻辑处理
-        turn2Portrait();
-        }
-    }
-}
-</code></pre><h3 id="2-横竖屏切换-如何使控制器大小随视频的切换而变化"><a href="#2-横竖屏切换-如何使控制器大小随视频的切换而变化" class="headerlink" title="2.横竖屏切换,如何使控制器大小随视频的切换而变化"></a>2.横竖屏切换,如何使控制器大小随视频的切换而变化</h3><pre><code>核心思路:将控制器的view加到一个ViewGroup中来控制大小
-
-在自定义的MediaController构造方法中加入;
-
-RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-
-mRoot.setLayoutParams(p);
-
- //container就是一个包裹着视频的ViewGroup
- ((RelativeLayout) container).addView(mRoot);
-</code></pre><h3 id="3-视频进度跳转逻辑处理"><a href="#3-视频进度跳转逻辑处理" class="headerlink" title="3.视频进度跳转逻辑处理"></a>3.视频进度跳转逻辑处理</h3><pre><code>一般是设置onInfoListener,在缓冲结束时跳转进度
-
-@Override
-public boolean onInfo(MediaPlayer mp, int what, int extra) {
-    switch (what) {
-        case MediaPlayer.MEDIA_INFO_BUFFERING_START:
-            //开始缓冲,这里一般暂停播放并显示缓冲百分比等数据
-            mp.pause();
-            break;
-        case MediaPlayer.MEDIA_INFO_BUFFERING_END:
-            //缓冲结束，在这里seek到想要跳转到的进度
-            mp.start();
-
-            break;
-    }
-    return false;
-}
-</code></pre><h4 id="3-1-如果需要在退出时保存进度-或者是home键跳出时保存进度，则一般在Activity的onPause-方法中获取到进度，亲测在onDestory-中获取进度时-播放器已经释放掉了，无法获取到进度。"><a href="#3-1-如果需要在退出时保存进度-或者是home键跳出时保存进度，则一般在Activity的onPause-方法中获取到进度，亲测在onDestory-中获取进度时-播放器已经释放掉了，无法获取到进度。" class="headerlink" title="3.1 如果需要在退出时保存进度,或者是home键跳出时保存进度，则一般在Activity的onPause()方法中获取到进度，亲测在onDestory()中获取进度时,播放器已经释放掉了，无法获取到进度。"></a>3.1 如果需要在退出时保存进度,或者是home键跳出时保存进度，则一般在Activity的onPause()方法中获取到进度，亲测在onDestory()中获取进度时,播放器已经释放掉了，无法获取到进度。</h4><h4 id="3-2-home键退出-又返回的情况下保存进度-需要在onPrepare-中和缓冲结束后都调用seekTo-进行设置进度才可以有效。"><a href="#3-2-home键退出-又返回的情况下保存进度-需要在onPrepare-中和缓冲结束后都调用seekTo-进行设置进度才可以有效。" class="headerlink" title="3.2 home键退出,又返回的情况下保存进度,需要在onPrepare()中和缓冲结束后都调用seekTo(),进行设置进度才可以有效。"></a>3.2 home键退出,又返回的情况下保存进度,需要在onPrepare()中和缓冲结束后都调用seekTo(),进行设置进度才可以有效。</h4>
-      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
     </div>
-    
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
-    
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">
-                    华为6.0的WRITE_SETTING权限问题
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/18/RecycleView点击事件错位的问题/">
-                    RecycleView点击事件错位的问题
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vitamio使用问题总结"><span class="toc-number">1.</span> <span class="toc-text">Vitamio使用问题总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-横竖屏切换-视频不重新加载"><span class="toc-number">1.1.</span> <span class="toc-text">1.横竖屏切换,视频不重新加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-横竖屏切换-如何使控制器大小随视频的切换而变化"><span class="toc-number">1.2.</span> <span class="toc-text">2.横竖屏切换,如何使控制器大小随视频的切换而变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-视频进度跳转逻辑处理"><span class="toc-number">1.3.</span> <span class="toc-text">3.视频进度跳转逻辑处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-如果需要在退出时保存进度-或者是home键跳出时保存进度，则一般在Activity的onPause-方法中获取到进度，亲测在onDestory-中获取进度时-播放器已经释放掉了，无法获取到进度。"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 如果需要在退出时保存进度,或者是home键跳出时保存进度，则一般在Activity的onPause()方法中获取到进度，亲测在onDestory()中获取进度时,播放器已经释放掉了，无法获取到进度。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-home键退出-又返回的情况下保存进度-需要在onPrepare-中和缓冲结束后都调用seekTo-进行设置进度才可以有效。"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 home键退出,又返回的情况下保存进度,需要在onPrepare()中和缓冲结束后都调用seekTo(),进行设置进度才可以有效。</span></a></li></ol></li></ol></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-
+  
+  
+    </div></section>
+  
 
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/" title="上一篇: 华为6.0的WRITE_SETTING权限问题">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/02/18/RecycleView点击事件错位的问题/" title="下一篇: RecycleView点击事件错位的问题">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/AndroidStduio插件,Windows工具和Chrome插件/">Android Stduio实用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/AndroidAnnotation注解框架的配置/">AndroidAnnotation注解框架的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
