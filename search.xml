@@ -73,7 +73,7 @@ getlibs aapt
     
     <entry>
       <title><![CDATA[Android Stduio实用插件]]></title>
-      <url>https://danielblue.github.io/2017/03/16/AndroidStduio%E6%8F%92%E4%BB%B6,Windows%E5%B7%A5%E5%85%B7%E5%92%8CChrome%E6%8F%92%E4%BB%B6/</url>
+      <url>https://danielblue.github.io/2017/03/16/Android%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/</url>
       <content type="html"><![CDATA[<h2 id="Android-Stduio实用插件"><a href="#Android-Stduio实用插件" class="headerlink" title="Android Stduio实用插件"></a>Android Stduio实用插件</h2><ol>
 <li><p>GsonFormat：将服务器端返回的Json数据直接生成相应的实体类，这个绝对是神器。  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/2017.3.16_Android%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GsonFormat.gif" alt=""></p>
 </li>
