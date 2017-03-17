@@ -18,9 +18,10 @@ export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
 </code></pre><p>加到文件末尾处。</p>
 </li>
-<li><p><strong>测试</strong>：在终端执行<code>java -version</code>，如果出现下面字样则jdk环境配置成功。  <br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png" alt=""><br>##配置SDK</p>
+<li><p><strong>测试</strong>：在终端执行<code>java -version</code>，如果出现下面字样则jdk环境配置成功。  <br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png" alt=""> </p>
 </li>
 </ul>
+<p>##配置SDK</p>
 <ol>
 <li><strong>下载SDK</strong>：<a href="https://pan.baidu.com/s/1mhTCTja" target="_blank" rel="external">https://pan.baidu.com/s/1mhTCTja</a>   <br><code>PS：如果网页的百度云点击下载，没反应，就登录账号后点再点下载。</code></li>
 </ol>
@@ -41,8 +42,9 @@ getlibs aapt
 </code></pre></li>
 </ul>
 <ul>
-<li><strong>测试</strong>：打开终端，执行<code>android</code>，出现SDK Manager则成功，这时可以在SDK Manager中将SDK下好。<br>##安装AndroidStudio</li>
+<li><strong>测试</strong>：打开终端，执行<code>android</code>，出现SDK Manager则成功，这时可以在SDK Manager中将SDK下好。</li>
 </ul>
+<p>##安装AndroidStudio</p>
 <ol>
 <li><strong>下载AndroidStudio</strong>:<a href="http://www.android-studio.org/" target="_blank" rel="external">http://www.android-studio.org/</a> </li>
 </ol>
