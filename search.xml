@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title><![CDATA[安装ubuntu16.04后的一些设置]]></title>
+      <url>https://danielblue.github.io/2017/03/22/%E5%AE%89%E8%A3%85ubuntu16.04%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h2 id="卸载那些不常用的软件"><a href="#卸载那些不常用的软件" class="headerlink" title="卸载那些不常用的软件"></a>卸载那些不常用的软件</h2><ul>
+<li><p>先安装更新</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre></li>
+<li><p>卸载libreOffice</p>
+<pre><code>sudo apt-get remove libreoffice-common
+</code></pre></li>
+<li><p>删除Amazon的链接</p>
+<pre><code>sudo apt-get remove unity-webapps-common
+</code></pre></li>
+<li><p>删掉基本不用的自带软件</p>
+<pre><code>sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install
+</code></pre></li>
+</ul>
+<h2 id="将主目录文件夹设置为英文"><a href="#将主目录文件夹设置为英文" class="headerlink" title="将主目录文件夹设置为英文"></a>将主目录文件夹设置为英文</h2><p>首先更改系统语言环境为英文  <br><br><code>export LANG=en_US</code>   <br><br>然后更改设置  <br><br><code>xdg-user-dirs-gtk-update</code>  <br><br>然后出现下图，选”更新名称”  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/ubuntu%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AE/lang_en.jpg" alt="">  <br><br>接着更改回中文语言环境  <br><br><code>export LANG=zh_CN.UTF-8</code>  <br><br>再次执行  <br><br><code>xdg-user-dirs-gtk-update</code>  <br><br>此时再次弹出界面，选择“保留旧的名称”,并”不要再次询问”  <br></p>
+<h2 id="将windows和ubuntu时间同步"><a href="#将windows和ubuntu时间同步" class="headerlink" title="将windows和ubuntu时间同步"></a>将windows和ubuntu时间同步</h2><p>先在ubuntu下更新一下时间，确保时间无误：  <br><br><code>sudo apt-get install ntpdate</code>  <br><br><code>sudo ntpdate time.windows.com</code>  <br><br>然后将时间更新到硬件上：  <br><br><code>sudo hwclock --localtime --systohc</code>  <br></p>
+<h2 id="Vysor连接手机黑屏"><a href="#Vysor连接手机黑屏" class="headerlink" title="Vysor连接手机黑屏"></a>Vysor连接手机黑屏</h2><p>在Google浏览器地址栏输入“chrome://nacl/”  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/ubuntu%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AE/vysor_1.jpg" alt="">  <br><br>如果 PNaCl translator是Not installed:状态，   <br><br>在Google地址栏输入“chrome://components ”，并找到“pnacl”它应该显示 version listed is 0.0.0.0  <br><br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/ubuntu%E9%87%8D%E8%A3%85%E9%85%8D%E7%BD%AE/vysor_2.png" alt=""><br>点击“检查是否有更新”，下载自动安装更新pnacl，在打开Vysor，连接Android，解决显示黑屏问题。  <br></p>
+<h2 id="创建AndroidStudio快捷方式"><a href="#创建AndroidStudio快捷方式" class="headerlink" title="创建AndroidStudio快捷方式"></a>创建AndroidStudio快捷方式</h2><p>在/usr/share/applications 目录下，新建以软件名称命名的文件AndroidStudio.desktop  <br></p>
+<p>$ sudo gedit /usr/share/applications/AndroidStudio.desktop  <br><br>编辑AndroidStudio.desktop  <br></p>
+<pre><code>[Desktop Entry]
+Encoding=UTF-8
+Name=AndroidStudio
+Comment=AndroidStudio IDE
+Exec=/usr/local/develop/bin/studio.sh  #根据软件的具体执行路径修改
+Icon=/usr/local/develop/bin/studio.png  #根据软件的具体执行路径修改
+Terminal=false  #软件打开时是否启动终端
+StartupNotify=false
+Type=Application
+Categories=Application;
+</code></pre><p>进入/usr/share/applications 将相应图标复制到桌面即可  <br></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 开发中的坑 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Ubuntu </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Ubuntu下配置Android开发环境]]></title>
       <url>https://danielblue.github.io/2017/03/17/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
       <content type="html"><![CDATA[<h2 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h2><ol>
@@ -34,10 +87,9 @@ export PATH=$SDK_HOME/tools:$SDK_HOME/platform-tools:$PATH
 </ul>
 <p>加到文件末尾处。</p>
 <ul>
-<li><p><strong>PS</strong>：如果我们是在64位的ubuntu环境下安装的话还要安装相关的32位库：  <br>下载地址：<a href="http://download.csdn.net/detail/marujunyy/5139457" target="_blank" rel="external">getlibs-all.deb</a></p>
-<pre><code>sudo dpkg -i --force-all getlibs-all.deb
-sudo apt-get update
-getlibs aapt
+<li><p><strong>PS</strong>：如果我们是在64位的ubuntu环境下安装的话还要安装相关的32位库：  <br></p>
+<pre><code>apt-get install lib32ncurses5 ​
+apt-get install lib32z1
 </code></pre></li>
 </ul>
 <ul>
