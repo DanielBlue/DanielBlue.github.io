@@ -4,6 +4,86 @@
   
     
     <entry>
+      <title><![CDATA[Android文件操作的内部存储和外部存储]]></title>
+      <url>https://danielblue.github.io/2017/09/01/Android%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E5%86%85%E9%83%A8%E5%AD%98%E5%82%A8%E5%92%8C%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8/</url>
+      <content type="html"><![CDATA[<p>#Android文件操作的内部存储和外部存储</p>
+<pre><code>Android中的内部存储和外部储存。
+简单来说，外部存储就是你通过文件管理能够访问到的地方，包括手机存储和内存卡存储。
+而内部存储是只有你的应用才能访问到的。
+</code></pre><p>首先需要取得读写权限</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+
+&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;
+</code></pre><p>##1. 内部存储<br><strong>内部存储还有你的应用可以访问到。</strong><br><strong>并且在卸载之后，系统会移除你应用在此的所有文件</strong>。<br><br><strong>内部存储一直可以访问到</strong></p>
+<p>####常用API</p>
+<pre><code>getCacheDir()：/data/data/&lt;your package&gt;/cache
+getFilesDir()：/data/data/&lt;your package&gt;/files
+getDataDirectory()：/data
+getDownloadCacheDirectory()：/cache
+</code></pre><p>##2.外部存储<br><strong>外部存储是共有的，所有应用可以访问到。</strong><br><br><strong>外部存储不是一直可以访问，通过usb挂载之后就会访问不到</strong><br><br><strong>在卸载之后，<code>getExternalCacheDir</code>和<code>getExternalFilesDir(String string)</code>中存储的文件会移除。</strong><br></p>
+<p>####手机外部存储<br>    Environment.getExternalStorageState()：mounted(Environment.MEDIA_MOUNTED)<br>    Environment.getExternalStorageDirectory()：/storage/emulated/0<br>    Environment.getExternalStoragePublicDirectory(“”)：/storage/emulated/0<br>    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES)：/storage/emulated/0/Movies<br>    getExternalCacheDir：/storage/emulated/0/Android/data/<your package="">/cache<br>    getExternalFilesDir(null)：/storage/emulated/0/Android/data/<your package="">/files<br>    getExternalFilesDir(Environment.DIRECTORY_MOVIES)：/storage/emulated/0/Android/data/<your package="">/files/Movies</your></your></your></p>
+<p>如果你的api版本低于8，那么不能使用getExternalFilesDir()，而是使用Environment.getExternalStorageDirectory()获得根目录，再去找到相关文件夹进行操作<br><br>因为api 8以下的版本在操作外部存储的文件时没有专门为私有文件和公共文件的操作提供api支持。</p>
+<p>####SD卡存储<br>内存卡其实也属于外部存储，但是Android没有直接的API可以操作，我们需要通过反射来获取所有可用的外部存储的路径。</p>
+<ul>
+<li><p>获取SD卡装载状态</p>
+<pre><code>public static List&lt;String&gt; listAvaliableStorage(Context context) {
+    ArrayList storagges = new ArrayList();
+    StorageManager storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
+    try {
+        Class&lt;?&gt;[] paramClasses = {};
+        Method getVolumeList = StorageManager.class.getMethod(&quot;getVolumeList&quot;, paramClasses);
+        getVolumeList.setAccessible(true);
+        Object[] params = {};
+        Object[] invokes = (Object[]) getVolumeList.invoke(storageManager, params);
+        if (invokes != null) {
+            for (int i = 0; i &lt; invokes.length; i++) {
+                Object obj = invokes[i];
+                Method getPath = obj.getClass().getMethod(&quot;getPath&quot;, new Class[0]);
+                String path = (String) getPath.invoke(obj, new Object[0]);
+                String state = null;
+                try {
+                    Method getVolumeState = StorageManager.class.getMethod(&quot;getVolumeState&quot;, String.class);
+                    state = (String) getVolumeState.invoke(storageManager, path);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (state.equals(Environment.MEDIA_MOUNTED)) {
+                    storagges.add(path);
+                }
+            }
+        }
+    } catch (NoSuchMethodException e1) {
+        e1.printStackTrace();
+    } catch (IllegalArgumentException e) {
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    } catch (InvocationTargetException e) {
+        e.printStackTrace();
+    }
+    storagges.trimToSize();
+
+    return storagges;
+}
+</code></pre><p>返回的<code>List&lt;String&gt;</code>就包括了所有可用的外部储存器的目录，其中第一个元素就是我们手机的外部存储路径<code>/storage/emulated/0</code>，后面一个或多个都是装载的SD卡。我们便可以通过集合的大小来判断是否有可用的SD卡。</p>
+</li>
+<li><p>获取SD卡路径<br>  <br><code>System.getenv(&quot;ENV_EXTERNAL_STORAGE&quot;)</code>可以得到储存卡的根目录，但是需要注意是没有装载SD卡的情况下，依然会返回SD卡的根目录路径，所以需要再做判断。</p>
+</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Android中的存储 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[安装ubuntu16.04后的一些设置]]></title>
       <url>https://danielblue.github.io/2017/03/22/%E5%AE%89%E8%A3%85ubuntu16.04%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h2 id="卸载那些不常用的软件"><a href="#卸载那些不常用的软件" class="headerlink" title="卸载那些不常用的软件"></a>卸载那些不常用的软件</h2><ul>
