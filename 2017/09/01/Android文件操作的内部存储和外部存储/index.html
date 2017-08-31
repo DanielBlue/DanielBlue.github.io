@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://danielblue.github.io/2017/09/01/Android文件操作的内部存储和外部存储/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
 <meta property="og:description" content="记录一下Android中的内部和外部存储器">
-<meta property="og:updated_time" content="2017-08-31T10:58:51.272Z">
+<meta property="og:updated_time" content="2017-08-31T11:01:08.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android文件操作的内部存储和外部存储">
 <meta name="twitter:description" content="记录一下Android中的内部和外部存储器">
@@ -308,7 +308,7 @@ getExternalFilesDir(Environment.DIRECTORY_MOVIES)：/storage/emulated/0/Android/
 <h4 id="SD卡存储"><a href="#SD卡存储" class="headerlink" title="SD卡存储"></a>SD卡存储</h4><p>内存卡其实也属于外部存储，但是Android没有直接的API可以操作，我们需要通过反射来获取所有可用的外部存储的路径。</p>
 <ul>
 <li><p>获取SD卡装载状态</p>
-<pre><code>public static List&lt;String&gt; listAvaliableStorage(Context context) {
+<pre><code>public static List&lt;String&gt; getExternalStoragePath(Context context) {
     ArrayList storagges = new ArrayList();
     StorageManager storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
     try {
