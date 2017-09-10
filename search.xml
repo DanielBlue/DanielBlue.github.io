@@ -13,12 +13,12 @@
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
 
 &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt;
-</code></pre><h2 id="1-内部存储"><a href="#1-内部存储" class="headerlink" title="1. 内部存储"></a>1. 内部存储</h2><p><strong>内部存储还有你的应用可以访问到。</strong><br><strong>并且在卸载之后，系统会移除你应用在此的所有文件</strong>。<br><br><strong>内部存储一直可以访问到</strong></p>
+</code></pre><h2 id="1-内部存储"><a href="#1-内部存储" class="headerlink" title="1. 内部存储"></a>1. 内部存储</h2><p><strong>内部存储只有你的应用可以访问到。</strong><br><strong>并且在应用卸载之后，系统会移除你应用在此的所有文件</strong>。<br><br><strong>内部存储一直可以访问到</strong></p>
 <h4 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h4><pre><code>getCacheDir()：/data/data/&lt;your package&gt;/cache
 getFilesDir()：/data/data/&lt;your package&gt;/files
 getDataDirectory()：/data
 getDownloadCacheDirectory()：/cache
-</code></pre><h2 id="2-外部存储"><a href="#2-外部存储" class="headerlink" title="2.外部存储"></a>2.外部存储</h2><p><strong>外部存储是共有的，所有应用可以访问到。</strong><br><br><strong>外部存储不是一直可以访问，通过usb挂载之后就会访问不到</strong><br><br><strong>在卸载之后，<code>getExternalCacheDir</code>和<code>getExternalFilesDir(String string)</code>中存储的文件会移除。</strong><br></p>
+</code></pre><h2 id="2-外部存储"><a href="#2-外部存储" class="headerlink" title="2.外部存储"></a>2.外部存储</h2><p><strong>外部存储是共有的，所有应用可以访问到。</strong><br><br><strong>外部存储不是一直可以访问，通过usb挂载之后就会访问不到</strong><br><br><strong>在应用卸载之后，<code>getExternalCacheDir</code>和<code>getExternalFilesDir(String string)</code>中存储的文件会移除。</strong><br></p>
 <h4 id="手机外部存储"><a href="#手机外部存储" class="headerlink" title="手机外部存储"></a>手机外部存储</h4><pre><code>Environment.getExternalStorageState()：mounted(Environment.MEDIA_MOUNTED)
 Environment.getExternalStorageDirectory()：/storage/emulated/0
 Environment.getExternalStoragePublicDirectory(&quot;&quot;)：/storage/emulated/0
