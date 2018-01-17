@@ -6,8 +6,7 @@
     <entry>
       <title><![CDATA[Centos-6.5安装mysql-5.6]]></title>
       <url>https://danielblue.github.io/2018/01/05/Centos-6.5%E5%AE%89%E8%A3%85mysql-5.6/</url>
-      <content type="html"><![CDATA[<p>#检查已安装的mysql</p>
-<blockquote>
+      <content type="html"><![CDATA[<h1 id="检查已安装的mysql"><a href="#检查已安装的mysql" class="headerlink" title="检查已安装的mysql"></a>检查已安装的mysql</h1><blockquote>
 <p>Centos的yum只能装5.1版本<br><br>安装前先卸载自带的mysql(如果有)</p>
 </blockquote>
 <pre><code>//是否有安装mysql
@@ -20,8 +19,7 @@
 # rpm -e mysql-libs --nodeps
 //删除mysql相关软件
 # yum -y remove mysql mysql-*
-</code></pre><p>#设置安装源</p>
-<pre><code>//设置安装源
+</code></pre><h1 id="设置安装源"><a href="#设置安装源" class="headerlink" title="设置安装源"></a>设置安装源</h1><pre><code>//设置安装源
 # wget http://repo.mysql.com/mysql57-community-release-el6-8.noarch.rpm
 # rpm -ivh mysql57-community-release-el6-8.noarch.rpm
 # ls -1 /etc/yum.repos.d/mysql-community*
@@ -31,13 +29,22 @@
 将[mysql56-community]的enabled设置为１,[mysql57-community]的enabled设置为0
 
 # yum repolist enabled | grep mysql
-</code></pre><p>#安装mysql</p>
-<pre><code># yum -y install mysql-server mysql
-</code></pre><p>#修改默认配置</p>
-<pre><code># mkdir /data/mysql
+</code></pre><h1 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h1><pre><code># yum -y install mysql-server mysql
+</code></pre><h1 id="修改默认配置"><a href="#修改默认配置" class="headerlink" title="修改默认配置"></a>修改默认配置</h1><pre><code># mkdir /data/mysql
 # vi /etc/my.cnf
-</code></pre><p>#编辑mysql配置<br>    [client]<br>    port=3306<br>    socket=/tmp/mysql.sock<br>      　　<br>    [mysql]<br>    default-character-set=utf8<br>      　　<br>    [mysqld]<br>    user=mysql<br>    character-set-server=utf8<br>    explicit_defaults_for_timestamp=true </p>
-<pre><code>#索引和数据缓冲区大小，一般设置物理内存的60%-70%   　　
+</code></pre><h1 id="编辑mysql配置"><a href="#编辑mysql配置" class="headerlink" title="编辑mysql配置"></a>编辑mysql配置</h1><pre><code>[client]  
+port=3306 
+socket=/tmp/mysql.sock 
+  　　
+[mysql] 
+default-character-set=utf8 
+  　　
+[mysqld] 
+user=mysql 
+character-set-server=utf8 
+explicit_defaults_for_timestamp=true 
+
+#索引和数据缓冲区大小，一般设置物理内存的60%-70%   　　
 innodb_buffer_pool_size = 1G 
 #缓冲池实例个数，推荐设置4个或8个 
 innodb_buffer_pool_instances = 4 
@@ -62,15 +69,12 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 [mysqld_safe] 
 log-error=/var/log/mysqld.log 
 pid-file=/var/run/mysqld/mysqld.pid
-</code></pre><p>#启动mysql服务</p>
-<pre><code># service mysqld start
-</code></pre><p>#设置mysql登录密码</p>
-<pre><code># mysql -u root
+</code></pre><h1 id="启动mysql服务"><a href="#启动mysql服务" class="headerlink" title="启动mysql服务"></a>启动mysql服务</h1><pre><code># service mysqld start
+</code></pre><h1 id="设置mysql登录密码"><a href="#设置mysql登录密码" class="headerlink" title="设置mysql登录密码"></a>设置mysql登录密码</h1><pre><code># mysql -u root
 mysql&gt; grant all privileges on *.* to &apos;yourpassword&apos; @&apos;%&apos; identified by &apos;root&apos;;
 mysql&gt; flush privileges;
 mysql&gt; quit
-</code></pre><p>#开放3306端口</p>
-<pre><code># /sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+</code></pre><h1 id="开放3306端口"><a href="#开放3306端口" class="headerlink" title="开放3306端口"></a>开放3306端口</h1><pre><code># /sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
 # /etc/rc.d/init.d/iptables save
 </code></pre>]]></content>
       
