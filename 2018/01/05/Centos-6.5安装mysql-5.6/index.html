@@ -15,12 +15,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/archives/2017/02/index.html">
+<meta name="description" content="Centos 6.5使用yum安装mysql 5.6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos-6.5安装mysql-5.6">
+<meta property="og:url" content="https://danielblue.github.io/2018/01/05/Centos-6.5安装mysql-5.6/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="Centos 6.5使用yum安装mysql 5.6">
+<meta property="og:updated_time" content="2018-01-17T05:11:02.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="Centos-6.5安装mysql-5.6">
+<meta name="twitter:description" content="Centos 6.5使用yum安装mysql 5.6">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2017/2 | Maoqi&#39;s Blog</title>
+<title>Centos-6.5安装mysql-5.6 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -240,171 +244,189 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Centos-6.5安装mysql-5.6" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2018/01/05/Centos-6.5安装mysql-5.6/" class="article-date">
+      <time datetime="2018-01-04T20:21:47.000Z" itemprop="datePublished">2018-01-04</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos-6.5安装mysql-5.6
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Centos/">Centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/20/git相关操作/" class="archive-article-date">
-      <time datetime="2017-02-20T09:51:06.000Z" itemprop="datePublished">02-20</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/20/git相关操作/">git相关操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+        <p>#检查已安装的mysql</p>
+<blockquote>
+<p>Centos的yum只能装5.1版本<br><br>安装前先卸载自带的mysql(如果有)</p>
+</blockquote>
+<pre><code>//是否有安装mysql
+# yum list installed | grep mysql
+//显示mysql有关的进程
+# ps -ef|grep mysql
+//停止服务
+# service mysqld stop 
+//删除mysql-libs    
+# rpm -e mysql-libs --nodeps
+//删除mysql相关软件
+# yum -y remove mysql mysql-*
+</code></pre><p>#设置安装源</p>
+<pre><code>//设置安装源
+# wget http://repo.mysql.com/mysql57-community-release-el6-8.noarch.rpm
+# rpm -ivh mysql57-community-release-el6-8.noarch.rpm
+# ls -1 /etc/yum.repos.d/mysql-community*
+# yum repolist all | grep mysql
+# vi /etc/yum.repos.d/mysql-community.repo
+
+将[mysql56-community]的enabled设置为１,[mysql57-community]的enabled设置为0
+
+# yum repolist enabled | grep mysql
+</code></pre><p>#安装mysql</p>
+<pre><code># yum -y install mysql-server mysql
+</code></pre><p>#修改默认配置</p>
+<pre><code># mkdir /data/mysql
+# vi /etc/my.cnf
+</code></pre><p>#编辑mysql配置<br>    [client]<br>    port=3306<br>    socket=/tmp/mysql.sock<br>      　　<br>    [mysql]<br>    default-character-set=utf8<br>      　　<br>    [mysqld]<br>    user=mysql<br>    character-set-server=utf8<br>    explicit_defaults_for_timestamp=true </p>
+<pre><code>#索引和数据缓冲区大小，一般设置物理内存的60%-70%   　　
+innodb_buffer_pool_size = 1G 
+#缓冲池实例个数，推荐设置4个或8个 
+innodb_buffer_pool_instances = 4 
+#关键参数，0代表大约每秒写入到日志并同步到磁盘，数据库故障会丢失1秒左右事务数据。1为每执行一条SQL后写入到日志并同步到磁盘，I/ O开销大，执行完SQL要等待日志读写，效率低。2代表只把日志写入到系统缓存区，再每秒同步到磁盘，效率很高，如果服务器故障，才会丢失事务数据。对数据安全性要求不是很高的推荐设置2，性能高，修改后效果明显。
+innodb_flush_log_at_trx_commit = 2   
+#默认是共享表空间，共享表空间idbdata文件不断增大，影响一定的I/O性能。推荐开启独立表空间模式，每个表的索引和数据都存在自己独立的表空间中，可以实现单表在不同数据库中移动。 
+innodb_file_per_table = ON 
+#日志缓冲区大小，由于日志最长每秒钟刷新一次，所以一般不用超过16M 
+innodb_log_buffer_size = 8M
+
+datadir=/data/mysql 
+socket=/tmp/mysql.sock 
+
+# 禁止MySQL对外部 连接进行DNS解析
+skip-name-resolve
+# Disabling symbolic-links is recommended to prevent assorted security risks 
+symbolic-links=0 
+
+# Recommended in standard MySQL setup 
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
+
+[mysqld_safe] 
+log-error=/var/log/mysqld.log 
+pid-file=/var/run/mysqld/mysqld.pid
+</code></pre><p>#启动mysql服务</p>
+<pre><code># service mysqld start
+</code></pre><p>#设置mysql登录密码</p>
+<pre><code># mysql -u root
+mysql&gt; grant all privileges on *.* to &apos;yourpassword&apos; @&apos;%&apos; identified by &apos;root&apos;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre><p>#开放3306端口</p>
+<pre><code># /sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+# /etc/rc.d/init.d/iptables save
+</code></pre>
+      
     </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/09/01/Android文件操作的内部存储和外部存储/">
+                    Android文件操作的内部存储和外部存储
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/" class="archive-article-date">
-      <time datetime="2017-02-17T21:56:39.000Z" itemprop="datePublished">02-17</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/09/01/Android文件操作的内部存储和外部存储/" title="下一篇: Android文件操作的内部存储和外部存储">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/6-0权限/">6.0权限</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WRITE-SETTING/">WRITE_SETTING</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/Vitamio使用问题总结/" class="archive-article-date">
-      <time datetime="2017-02-17T21:52:22.000Z" itemprop="datePublished">02-17</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/Centos-6.5安装mysql-5.6/">Centos-6.5安装mysql-5.6</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/Android文件操作的内部存储和外部存储/">Android文件操作的内部存储和外部存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/安装ubuntu16.04后的一些设置/">安装ubuntu16.04后的一些设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/Android开发相关实用工具/">Android Stduio实用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/AndroidAnnotation注解框架的配置/">AndroidAnnotation注解框架的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
-    </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/18/RecycleView点击事件错位的问题/" class="archive-article-date">
-      <time datetime="2017-02-17T21:49:10.000Z" itemprop="datePublished">02-17</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

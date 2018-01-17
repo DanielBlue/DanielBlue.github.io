@@ -4,6 +4,88 @@
   
     
     <entry>
+      <title><![CDATA[Centos-6.5安装mysql-5.6]]></title>
+      <url>https://danielblue.github.io/2018/01/05/Centos-6.5%E5%AE%89%E8%A3%85mysql-5.6/</url>
+      <content type="html"><![CDATA[<p>#检查已安装的mysql</p>
+<blockquote>
+<p>Centos的yum只能装5.1版本<br><br>安装前先卸载自带的mysql(如果有)</p>
+</blockquote>
+<pre><code>//是否有安装mysql
+# yum list installed | grep mysql
+//显示mysql有关的进程
+# ps -ef|grep mysql
+//停止服务
+# service mysqld stop 
+//删除mysql-libs    
+# rpm -e mysql-libs --nodeps
+//删除mysql相关软件
+# yum -y remove mysql mysql-*
+</code></pre><p>#设置安装源</p>
+<pre><code>//设置安装源
+# wget http://repo.mysql.com/mysql57-community-release-el6-8.noarch.rpm
+# rpm -ivh mysql57-community-release-el6-8.noarch.rpm
+# ls -1 /etc/yum.repos.d/mysql-community*
+# yum repolist all | grep mysql
+# vi /etc/yum.repos.d/mysql-community.repo
+
+将[mysql56-community]的enabled设置为１,[mysql57-community]的enabled设置为0
+
+# yum repolist enabled | grep mysql
+</code></pre><p>#安装mysql</p>
+<pre><code># yum -y install mysql-server mysql
+</code></pre><p>#修改默认配置</p>
+<pre><code># mkdir /data/mysql
+# vi /etc/my.cnf
+</code></pre><p>#编辑mysql配置<br>    [client]<br>    port=3306<br>    socket=/tmp/mysql.sock<br>      　　<br>    [mysql]<br>    default-character-set=utf8<br>      　　<br>    [mysqld]<br>    user=mysql<br>    character-set-server=utf8<br>    explicit_defaults_for_timestamp=true </p>
+<pre><code>#索引和数据缓冲区大小，一般设置物理内存的60%-70%   　　
+innodb_buffer_pool_size = 1G 
+#缓冲池实例个数，推荐设置4个或8个 
+innodb_buffer_pool_instances = 4 
+#关键参数，0代表大约每秒写入到日志并同步到磁盘，数据库故障会丢失1秒左右事务数据。1为每执行一条SQL后写入到日志并同步到磁盘，I/ O开销大，执行完SQL要等待日志读写，效率低。2代表只把日志写入到系统缓存区，再每秒同步到磁盘，效率很高，如果服务器故障，才会丢失事务数据。对数据安全性要求不是很高的推荐设置2，性能高，修改后效果明显。
+innodb_flush_log_at_trx_commit = 2   
+#默认是共享表空间，共享表空间idbdata文件不断增大，影响一定的I/O性能。推荐开启独立表空间模式，每个表的索引和数据都存在自己独立的表空间中，可以实现单表在不同数据库中移动。 
+innodb_file_per_table = ON 
+#日志缓冲区大小，由于日志最长每秒钟刷新一次，所以一般不用超过16M 
+innodb_log_buffer_size = 8M
+
+datadir=/data/mysql 
+socket=/tmp/mysql.sock 
+
+# 禁止MySQL对外部 连接进行DNS解析
+skip-name-resolve
+# Disabling symbolic-links is recommended to prevent assorted security risks 
+symbolic-links=0 
+
+# Recommended in standard MySQL setup 
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
+
+[mysqld_safe] 
+log-error=/var/log/mysqld.log 
+pid-file=/var/run/mysqld/mysqld.pid
+</code></pre><p>#启动mysql服务</p>
+<pre><code># service mysqld start
+</code></pre><p>#设置mysql登录密码</p>
+<pre><code># mysql -u root
+mysql&gt; grant all privileges on *.* to &apos;yourpassword&apos; @&apos;%&apos; identified by &apos;root&apos;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre><p>#开放3306端口</p>
+<pre><code># /sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+# /etc/rc.d/init.d/iptables save
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Centos </tag>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android文件操作的内部存储和外部存储]]></title>
       <url>https://danielblue.github.io/2017/09/01/Android%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E5%86%85%E9%83%A8%E5%AD%98%E5%82%A8%E5%92%8C%E5%A4%96%E9%83%A8%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<h1 id="Android文件操作的内部存储和外部存储"><a href="#Android文件操作的内部存储和外部存储" class="headerlink" title="Android文件操作的内部存储和外部存储"></a>Android文件操作的内部存储和外部存储</h1><pre><code>Android中的内部存储和外部储存。
