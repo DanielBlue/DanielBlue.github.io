@@ -15,18 +15,16 @@
 
 
 
-<meta name="description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
+<meta name="description" content="git分支相关操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下配置Android开发环境">
-<meta property="og:url" content="https://danielblue.github.io/2017/03/17/Ubuntu下配置Android开发环境/index.html">
+<meta property="og:title" content="git创建分支并设置文件忽略规则">
+<meta property="og:url" content="https://danielblue.github.io/2018/01/21/git创建分支并设置文件忽略规则/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
-<meta property="og:description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
-<meta property="og:image" content="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png">
-<meta property="og:updated_time" content="2017-03-22T05:18:25.930Z">
+<meta property="og:description" content="git分支相关操作">
+<meta property="og:updated_time" content="2018-01-20T08:41:32.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下配置Android开发环境">
-<meta name="twitter:description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png">
+<meta name="twitter:title" content="git创建分支并设置文件忽略规则">
+<meta name="twitter:description" content="git分支相关操作">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Ubuntu下配置Android开发环境 | Maoqi&#39;s Blog</title>
+<title>git创建分支并设置文件忽略规则 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -246,11 +244,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Ubuntu下配置Android开发环境" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-git创建分支并设置文件忽略规则" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/17/Ubuntu下配置Android开发环境/" class="article-date">
-      <time datetime="2017-03-17T12:25:46.000Z" itemprop="datePublished">2017-03-17</time>
+      <a href="/2018/01/21/git创建分支并设置文件忽略规则/" class="article-date">
+      <time datetime="2018-01-20T16:39:29.000Z" itemprop="datePublished">2018-01-20</time>
 </a>
 
 
@@ -265,7 +263,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Ubuntu下配置Android开发环境
+      git创建分支并设置文件忽略规则
     </h1>
   
 
@@ -274,13 +272,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -290,52 +288,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h2><ol>
-<li><strong>下载JDK</strong>：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> </li>
-</ol>
-<ul>
-<li><strong>解压</strong>：<code>在~/下载/</code>下打开终端，执行<code>sudo tar -xzf jdk-8u121-linux-x64.tar.gz</code>，然后会多出<code>jdk1.8.0_121</code>这个文件夹，执行<code>sudo mv jdk1.8.0_121 /usr/lib/</code>将<code>jdk1.8.0_121</code>移动到<code>/usr/lib</code>目录下。</li>
-<li><p><strong>配置jdk环境变量</strong>：执行<code>gedit /etc/profile</code>，将</p>
-<pre><code>export JAVA_HOME=/usr/lib/jdk1.8.0_121 
-export JRE_HOME=${JAVA_HOME}/jre 
-export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
-export PATH=${JAVA_HOME}/bin:$PATH
-</code></pre><p>加到文件末尾处。</p>
-</li>
-<li><p><strong>测试</strong>：在终端执行<code>java -version</code>，如果出现下面字样则jdk环境配置成功。  <br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png" alt=""> </p>
-</li>
-</ul>
-<h2 id="配置SDK"><a href="#配置SDK" class="headerlink" title="配置SDK"></a>配置SDK</h2><ol>
-<li><strong>下载SDK</strong>：<a href="https://pan.baidu.com/s/1mhTCTja" target="_blank" rel="external">https://pan.baidu.com/s/1mhTCTja</a>   <br><code>PS：如果网页的百度云点击下载，没反应，就登录账号后点再点下载。</code></li>
-</ol>
-<ul>
-<li><strong>解压</strong>：在<code>~</code>主目录下新建文件夹<code>develop</code>，再<code>~/下载/</code>执行<code>tar -zxf android-sdk_r24.4.1-linux.tgz</code>，然后会出现<code>android-sdk-linux</code>这个文件夹,执行<code>sudo mv android-sdk-linux ~/develop/</code>。</li>
-<li><strong>设置读写权限</strong>：进入到<code>~/develop/</code>文件夹下，打开终端<code>chmod a+x,a+w,a+r ~/develop/android-sdk-linux -R</code></li>
-<li><p><strong>配置环境变量</strong>：执行<code>gedit /etc/profile</code>，将</p>
-<pre><code>export SDK_HOME=/home/maoqi/develop/android-sdk-linux  
-export PATH=$SDK_HOME/tools:$SDK_HOME/platform-tools:$PATH
-</code></pre></li>
-</ul>
-<p>加到文件末尾处。</p>
-<ul>
-<li><p><strong>PS</strong>：如果我们是在64位的ubuntu环境下安装的话还要安装相关的32位库：  <br></p>
-<pre><code>apt-get install lib32ncurses5 ​
-apt-get install lib32z1
-</code></pre></li>
-</ul>
-<ul>
-<li><strong>测试</strong>：打开终端，执行<code>android</code>，出现SDK Manager则成功，这时可以在SDK Manager中将SDK下好。</li>
-</ul>
-<h2 id="安装AndroidStudio"><a href="#安装AndroidStudio" class="headerlink" title="安装AndroidStudio"></a>安装AndroidStudio</h2><ol>
-<li><strong>下载AndroidStudio</strong>:<a href="http://www.android-studio.org/" target="_blank" rel="external">http://www.android-studio.org/</a> </li>
-</ol>
-<ul>
-<li><strong>解压</strong>：因为我下载的是zip格式，所以执行<code>unzip android-studio-ide-162.3764568-linux.zip</code>j解压，然后将解压的<code>android-studio</code>文件夹移动到develop文件夹下，执行<code>sudo mv android-studio ~/develop</code>。</li>
-<li><strong>打开AndroidStudio</strong>：<code>cd ~/develop/android-studio/bin</code>进入bin目录，执行<code>./studio.sh</code>打开AndroidStudio。</li>
-<li><strong>PS</strong>：第一次打开AndroidStudio会下载gradle，速度会非常慢，具体解决办法可以看这篇文章<a href="http://blog.csdn.net/junbujianwpl/article/details/51587977" target="_blank" rel="external">http://blog.csdn.net/junbujianwpl/article/details/51587977</a> </li>
-<li><strong>PPS</strong>：gradle所有版本下载地址：<a href="http://services.gradle.org/distributions/" target="_blank" rel="external">http://services.gradle.org/distributions/</a> </li>
-</ul>
-
+        <h1 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h1><pre><code>git branch branch_name
+</code></pre><h1 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h1><pre><code>git checkout branch_name
+</code></pre><h1 id="切换并创建分支"><a href="#切换并创建分支" class="headerlink" title="切换并创建分支"></a>切换并创建分支</h1><pre><code>git checkout -b branch_name
+</code></pre><h1 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h1><p>将branch_name分支并入master</p>
+<pre><code>git checkout master
+git merge branch_name
+</code></pre><h1 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h1><pre><code>git branch -d branch_name
+</code></pre><h1 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h1><pre><code>//回退到上个版本
+git reset --hard HEAD^
+//查看所有操作的记录(找到想要回退的版本的commit_id)
+git reflog
+//回退或前进到指定commit_id
+git reset --hard commit_id
+</code></pre><h1 id="git忽略某些文件夹"><a href="#git忽略某些文件夹" class="headerlink" title="git忽略某些文件夹"></a>git忽略某些文件夹</h1><p>有时候不想文件夹下有些文件不想加入git</p>
+<p>则可以使用.gitignore进行过滤</p>
+<p>在项目根目录下新建.gitignore 文件</p>
+<p>windows下使用命令行改名</p>
+<pre><code>rename XXX.gitignore .gitignore
+</code></pre><p><a href="https://github.com/github/gitignore" title=".gitignore规则模板" target="_blank" rel="external">.gitignore规则模板</a></p>
+<p><a href="https://github.com/github/gitignore/blob/master/Android.gitignore" title="Android规则模板" target="_blank" rel="external">Android规则模板</a></p>
+<p>.gitignore文件只能过滤为提交的文件，如果已提交，则需要先删除本地缓存</p>
+<pre><code>//删除缓存
+git rm -r --cached .
+//重新add
+git add .
+//commit
+git commit -m &apos;add .gitignore&apos;
+</code></pre>
       
     </div>
     
@@ -346,16 +326,10 @@ apt-get install lib32z1
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/22/安装ubuntu16.04后的一些设置/">
-                    安装ubuntu16.04后的一些设置
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/16/Android开发相关实用工具/">
-                    Android Stduio实用插件
+                <a href="/2018/01/05/Centos-6.5安装mysql-5.6/">
+                    Centos-6.5安装mysql-5.6
                 </a>
             </div>
         
@@ -367,7 +341,7 @@ apt-get install lib32z1
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置JDK"><span class="toc-number">1.</span> <span class="toc-text">配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SDK"><span class="toc-number">2.</span> <span class="toc-text">配置SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装AndroidStudio"><span class="toc-number">3.</span> <span class="toc-text">安装AndroidStudio</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建新分支"><span class="toc-number">1.</span> <span class="toc-text">创建新分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换分支"><span class="toc-number">2.</span> <span class="toc-text">切换分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换并创建分支"><span class="toc-number">3.</span> <span class="toc-text">切换并创建分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#合并分支"><span class="toc-number">4.</span> <span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除分支"><span class="toc-number">5.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回退版本"><span class="toc-number">6.</span> <span class="toc-text">回退版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git忽略某些文件夹"><span class="toc-number">7.</span> <span class="toc-text">git忽略某些文件夹</span></a></li></ol>
         
     </div>
     <style>
@@ -398,15 +372,13 @@ apt-get install lib32z1
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/22/安装ubuntu16.04后的一些设置/" title="上一篇: 安装ubuntu16.04后的一些设置">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/16/Android开发相关实用工具/" title="下一篇: Android Stduio实用插件">
+            <a href="/2018/01/05/Centos-6.5安装mysql-5.6/" title="下一篇: Centos-6.5安装mysql-5.6">
                 <i class="fa fa-angle-right"></i>
             </a>
         

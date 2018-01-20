@@ -14,19 +14,16 @@
 <meta name="author" content="Mao Qi" />
 
 
+    
+    
 
-<meta name="description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下配置Android开发环境">
-<meta property="og:url" content="https://danielblue.github.io/2017/03/17/Ubuntu下配置Android开发环境/index.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maoqi's Blog">
+<meta property="og:url" content="https://danielblue.github.io/page/2/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
-<meta property="og:description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
-<meta property="og:image" content="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png">
-<meta property="og:updated_time" content="2017-03-22T05:18:25.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下配置Android开发环境">
-<meta name="twitter:description" content="刚把Android开发环境转到Ubuntu16.04，配置开发环境踩了不少坑，记录一下">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png">
+<meta name="twitter:title" content="Maoqi's Blog">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,11 +51,13 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
+    <style> .article { opacity: 0;} </style>
+
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Ubuntu下配置Android开发环境 | Maoqi&#39;s Blog</title>
+<title>Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: false,
-        isPost: true,
+        isHome: true,
+        isPost: false,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -246,11 +245,13 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Ubuntu下配置Android开发环境" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-RecycleView点击事件错位的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/17/Ubuntu下配置Android开发环境/" class="article-date">
-      <time datetime="2017-03-17T12:25:46.000Z" itemprop="datePublished">2017-03-17</time>
+      <a href="/2017/02/18/RecycleView点击事件错位的问题/" class="article-date">
+      <time datetime="2017-02-17T21:49:10.000Z" itemprop="datePublished">2017-02-17</time>
 </a>
 
 
@@ -264,162 +265,59 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Ubuntu下配置Android开发环境
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a>
     </h1>
   
 
       </header>
       
-      <div class="article-info article-info-post">
-        
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>使用RecycleView实现如下的效果</p>
+<p><img src="https://github.com/DanielBlue/img/blob/master/listview.gif?raw=true" alt=""></p>
+<p>却发现一个问题，无论点击哪一个item，都是第三个item的状态改变，最后发现是因为把点击事件放到了onBindViewHolder()方法中了，每一次点击改变的都会是最后一个item。于是把点击事件放到ViewHolder的构造函数中，问题完美解决</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
     </div>
 
 
-        
+      
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li></ul>
     </div>
 
-        <div class="clearfix"></div>
-      </div>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h2><ol>
-<li><strong>下载JDK</strong>：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a> </li>
-</ol>
-<ul>
-<li><strong>解压</strong>：<code>在~/下载/</code>下打开终端，执行<code>sudo tar -xzf jdk-8u121-linux-x64.tar.gz</code>，然后会多出<code>jdk1.8.0_121</code>这个文件夹，执行<code>sudo mv jdk1.8.0_121 /usr/lib/</code>将<code>jdk1.8.0_121</code>移动到<code>/usr/lib</code>目录下。</li>
-<li><p><strong>配置jdk环境变量</strong>：执行<code>gedit /etc/profile</code>，将</p>
-<pre><code>export JAVA_HOME=/usr/lib/jdk1.8.0_121 
-export JRE_HOME=${JAVA_HOME}/jre 
-export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
-export PATH=${JAVA_HOME}/bin:$PATH
-</code></pre><p>加到文件末尾处。</p>
-</li>
-<li><p><strong>测试</strong>：在终端执行<code>java -version</code>，如果出现下面字样则jdk环境配置成功。  <br><img src="https://raw.githubusercontent.com/DanielBlue/img/master/Ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEAndroid%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/jdk%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.png" alt=""> </p>
-</li>
-</ul>
-<h2 id="配置SDK"><a href="#配置SDK" class="headerlink" title="配置SDK"></a>配置SDK</h2><ol>
-<li><strong>下载SDK</strong>：<a href="https://pan.baidu.com/s/1mhTCTja" target="_blank" rel="external">https://pan.baidu.com/s/1mhTCTja</a>   <br><code>PS：如果网页的百度云点击下载，没反应，就登录账号后点再点下载。</code></li>
-</ol>
-<ul>
-<li><strong>解压</strong>：在<code>~</code>主目录下新建文件夹<code>develop</code>，再<code>~/下载/</code>执行<code>tar -zxf android-sdk_r24.4.1-linux.tgz</code>，然后会出现<code>android-sdk-linux</code>这个文件夹,执行<code>sudo mv android-sdk-linux ~/develop/</code>。</li>
-<li><strong>设置读写权限</strong>：进入到<code>~/develop/</code>文件夹下，打开终端<code>chmod a+x,a+w,a+r ~/develop/android-sdk-linux -R</code></li>
-<li><p><strong>配置环境变量</strong>：执行<code>gedit /etc/profile</code>，将</p>
-<pre><code>export SDK_HOME=/home/maoqi/develop/android-sdk-linux  
-export PATH=$SDK_HOME/tools:$SDK_HOME/platform-tools:$PATH
-</code></pre></li>
-</ul>
-<p>加到文件末尾处。</p>
-<ul>
-<li><p><strong>PS</strong>：如果我们是在64位的ubuntu环境下安装的话还要安装相关的32位库：  <br></p>
-<pre><code>apt-get install lib32ncurses5 ​
-apt-get install lib32z1
-</code></pre></li>
-</ul>
-<ul>
-<li><strong>测试</strong>：打开终端，执行<code>android</code>，出现SDK Manager则成功，这时可以在SDK Manager中将SDK下好。</li>
-</ul>
-<h2 id="安装AndroidStudio"><a href="#安装AndroidStudio" class="headerlink" title="安装AndroidStudio"></a>安装AndroidStudio</h2><ol>
-<li><strong>下载AndroidStudio</strong>:<a href="http://www.android-studio.org/" target="_blank" rel="external">http://www.android-studio.org/</a> </li>
-</ol>
-<ul>
-<li><strong>解压</strong>：因为我下载的是zip格式，所以执行<code>unzip android-studio-ide-162.3764568-linux.zip</code>j解压，然后将解压的<code>android-studio</code>文件夹移动到develop文件夹下，执行<code>sudo mv android-studio ~/develop</code>。</li>
-<li><strong>打开AndroidStudio</strong>：<code>cd ~/develop/android-studio/bin</code>进入bin目录，执行<code>./studio.sh</code>打开AndroidStudio。</li>
-<li><strong>PS</strong>：第一次打开AndroidStudio会下载gradle，速度会非常慢，具体解决办法可以看这篇文章<a href="http://blog.csdn.net/junbujianwpl/article/details/51587977" target="_blank" rel="external">http://blog.csdn.net/junbujianwpl/article/details/51587977</a> </li>
-<li><strong>PPS</strong>：gradle所有版本下载地址：<a href="http://services.gradle.org/distributions/" target="_blank" rel="external">http://services.gradle.org/distributions/</a> </li>
-</ul>
-
-      
+      <div class="clearfix"></div>
     </div>
     
   </div>
   
-    
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/22/安装ubuntu16.04后的一些设置/">
-                    安装ubuntu16.04后的一些设置
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/16/Android开发相关实用工具/">
-                    Android Stduio实用插件
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
 
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置JDK"><span class="toc-number">1.</span> <span class="toc-text">配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SDK"><span class="toc-number">2.</span> <span class="toc-text">配置SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装AndroidStudio"><span class="toc-number">3.</span> <span class="toc-text">安装AndroidStudio</span></a></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
 
 
 
 
 
-    
 
 
 
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/03/22/安装ubuntu16.04后的一些设置/" title="上一篇: 安装ubuntu16.04后的一些设置">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/03/16/Android开发相关实用工具/" title="下一篇: Android Stduio实用插件">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/21/git创建分支并设置文件忽略规则/">git创建分支并设置文件忽略规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/Centos-6.5安装mysql-5.6/">Centos-6.5安装mysql-5.6</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/Android文件操作的内部存储和外部存储/">Android文件操作的内部存储和外部存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/安装ubuntu16.04后的一些设置/">安装ubuntu16.04后的一些设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/Android开发相关实用工具/">Android Stduio实用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/AndroidAnnotation注解框架的配置/">AndroidAnnotation注解框架的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 </div>
       <footer id="footer">
     <div class="outer">
