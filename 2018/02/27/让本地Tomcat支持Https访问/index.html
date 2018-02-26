@@ -15,12 +15,28 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/categories/开发工具/index.html">
+<meta name="description" content="前言最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&amp;quot;加载不安全的脚本&amp;quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
+
+ps:这是自己生成的证书，访问时浏览器会标红”不安全的网站”，实际中应该去证书网站申请。自己生成的证书主要是免费的
+
+1.生成证书进入jdk的bin目录，命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让本地Tomcat支持Https访问">
+<meta property="og:url" content="https://danielblue.github.io/2018/02/27/让本地Tomcat支持Https访问/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="前言最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&amp;quot;加载不安全的脚本&amp;quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
+
+ps:这是自己生成的证书，访问时浏览器会标红”不安全的网站”，实际中应该去证书网站申请。自己生成的证书主要是免费的
+
+1.生成证书进入jdk的bin目录，命令">
+<meta property="og:updated_time" content="2018-02-26T11:27:18.792Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="让本地Tomcat支持Https访问">
+<meta name="twitter:description" content="前言最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&amp;quot;加载不安全的脚本&amp;quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
+
+ps:这是自己生成的证书，访问时浏览器会标红”不安全的网站”，实际中应该去证书网站申请。自己生成的证书主要是免费的
+
+1.生成证书进入jdk的bin目录，命令">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +68,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Category: 开发工具 | Maoqi&#39;s Blog</title>
+<title>让本地Tomcat支持Https访问 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,10 +78,10 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
-        isCategory: true,
+        isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
         search: true
@@ -240,144 +256,167 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-让本地Tomcat支持Https访问" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/01/21/git创建分支并设置文件忽略规则/" class="archive-article-date">
-      <time datetime="2018-01-20T16:39:29.000Z" itemprop="datePublished">01-20</time>
+    <div class="article-meta">
+      <a href="/2018/02/27/让本地Tomcat支持Https访问/" class="article-date">
+      <time datetime="2018-02-26T19:25:59.000Z" itemprop="datePublished">2018-02-26</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/21/git创建分支并设置文件忽略规则/">git创建分支并设置文件忽略规则</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      让本地Tomcat支持Https访问
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </header>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/16/Android开发相关实用工具/" class="archive-article-date">
-      <time datetime="2017-03-15T22:24:25.000Z" itemprop="datePublished">03-15</time>
-</a>
+      <div class="article-info article-info-post">
+        
 
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/Android开发相关实用工具/">Android Stduio实用插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
-    </div>
-
-
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio插件/">Android Studio插件</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/20/git相关操作/" class="archive-article-date">
-      <time datetime="2017-02-20T09:51:06.000Z" itemprop="datePublished">02-20</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/20/git相关操作/">git相关操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&quot;加载不安全的脚本&quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
+</code></pre><blockquote>
+<p>ps:这是自己生成的证书，访问时浏览器会标红”不安全的网站”，实际中应该去证书网站申请。自己生成的证书主要是免费的</p>
+</blockquote>
+<h3 id="1-生成证书"><a href="#1-生成证书" class="headerlink" title="1.生成证书"></a>1.生成证书</h3><p>进入jdk的bin目录，命令行输入</p>
+<pre><code>keytool -genkeypair -alias &quot;tomcat&quot; -keyalg &quot;RSA&quot; -keystore &quot;/usr/ca/tomcat.keystore&quot; 
+
+//keystore后面是生成证书的位置
+
+输入keystore密码： 
+再次输入新密码: 
+您的名字与姓氏是什么？ 
+[Unknown]： //这里是你的域名 
+您的组织单位名称是什么？ 
+[Unknown]： something 
+您的组织名称是什么？ 
+[Unknown]： something
+您所在的城市或区域名称是什么？ 
+[Unknown]： something 
+您所在的州或省份名称是什么？ 
+[Unknown]： something 
+该单位的两字母国家代码是什么 
+[Unknown]： something 
+N=kbl, OU=yjw, O=yjw, L=sz, ST=gd, C=zh 正确吗？ 
+[否]： y 
+</code></pre><p>在之前设置的目录就可以找到keystore证书</p>
+<h3 id="2-配置tomcat"><a href="#2-配置tomcat" class="headerlink" title="2.配置tomcat"></a>2.配置tomcat</h3><p>进入tomcat的conf目录，编辑server.xml，找到下面的Connector，并打开注释</p>
+<pre><code>&lt;Connector port=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot;                        SSLEnabled=&quot;true&quot;
+           maxThreads=&quot;150&quot; scheme=&quot;https&quot; secure=&quot;true&quot;
+           clientAuth=&quot;false&quot; sslProtocol=&quot;TLS&quot; 
+           keystoreFile=&quot;/usr/ca/tomcat.keystore&quot; keystorePass=&quot;your password&quot;/&gt;
+</code></pre><p>这步操作之后就可以使用https和8443端口访问你的web服务器了</p>
+<p>如果要想要隐藏端口，则将server.xml中所有的8443端口改为443端口</p>
+<h3 id="3-将http都转发到https"><a href="#3-将http都转发到https" class="headerlink" title="3.将http都转发到https"></a>3.将http都转发到https</h3><p>进入tomcat的conf目录，编辑web.xml,添加下面的代码</p>
+<pre><code>&lt;security-constraint&gt;
+&lt;web-resource-collection &gt;
+          &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;
+          &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/web-resource-collection&gt;                             
+   &lt;user-data-constraint&gt;
+   &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
+   &lt;/user-data-constraint&gt;
+&lt;/security-constraint&gt;
+</code></pre><p>你的http访问都会转发到https</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/01/21/git创建分支并设置文件忽略规则/">
+                    git创建分支并设置文件忽略规则
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-生成证书"><span class="toc-number">1.1.</span> <span class="toc-text">1.生成证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置tomcat"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-将http都转发到https"><span class="toc-number">1.3.</span> <span class="toc-text">3.将http都转发到https</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/01/21/git创建分支并设置文件忽略规则/" title="下一篇: git创建分支并设置文件忽略规则">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/让本地Tomcat支持Https访问/">让本地Tomcat支持Https访问</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/21/git创建分支并设置文件忽略规则/">git创建分支并设置文件忽略规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/Centos-6.5安装mysql-5.6/">Centos-6.5安装mysql-5.6</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/Android文件操作的内部存储和外部存储/">Android文件操作的内部存储和外部存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/安装ubuntu16.04后的一些设置/">安装ubuntu16.04后的一些设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/Android开发相关实用工具/">Android Stduio实用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/AndroidAnnotation注解框架的配置/">AndroidAnnotation注解框架的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

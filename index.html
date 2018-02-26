@@ -180,7 +180,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/6-0权限/">6.0权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio插件/">Android Studio插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidAnnotation/">AndroidAnnotation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android中的存储/">Android中的存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WRITE-SETTING/">WRITE_SETTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/6-0权限/">6.0权限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio插件/">Android Studio插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidAnnotation/">AndroidAnnotation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android中的存储/">Android中的存储</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Centos/">Centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RecyclerView/">RecyclerView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WRITE-SETTING/">WRITE_SETTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
                     </div>
                 </section>
                 
@@ -246,6 +246,109 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-让本地Tomcat支持Https访问" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/02/27/让本地Tomcat支持Https访问/" class="article-date">
+      <time datetime="2018-02-26T19:25:59.000Z" itemprop="datePublished">2018-02-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/27/让本地Tomcat支持Https访问/">让本地Tomcat支持Https访问</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&quot;加载不安全的脚本&quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
+</code></pre><blockquote>
+<p>ps:这是自己生成的证书，访问时浏览器会标红”不安全的网站”，实际中应该去证书网站申请。自己生成的证书主要是免费的</p>
+</blockquote>
+<h3 id="1-生成证书"><a href="#1-生成证书" class="headerlink" title="1.生成证书"></a>1.生成证书</h3><p>进入jdk的bin目录，命令行输入</p>
+<pre><code>keytool -genkeypair -alias &quot;tomcat&quot; -keyalg &quot;RSA&quot; -keystore &quot;/usr/ca/tomcat.keystore&quot; 
+
+//keystore后面是生成证书的位置
+
+输入keystore密码： 
+再次输入新密码: 
+您的名字与姓氏是什么？ 
+[Unknown]： //这里是你的域名 
+您的组织单位名称是什么？ 
+[Unknown]： something 
+您的组织名称是什么？ 
+[Unknown]： something
+您所在的城市或区域名称是什么？ 
+[Unknown]： something 
+您所在的州或省份名称是什么？ 
+[Unknown]： something 
+该单位的两字母国家代码是什么 
+[Unknown]： something 
+N=kbl, OU=yjw, O=yjw, L=sz, ST=gd, C=zh 正确吗？ 
+[否]： y 
+</code></pre><p>在之前设置的目录就可以找到keystore证书</p>
+<h3 id="2-配置tomcat"><a href="#2-配置tomcat" class="headerlink" title="2.配置tomcat"></a>2.配置tomcat</h3><p>进入tomcat的conf目录，编辑server.xml，找到下面的Connector，并打开注释</p>
+<pre><code>&lt;Connector port=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot;                        SSLEnabled=&quot;true&quot;
+           maxThreads=&quot;150&quot; scheme=&quot;https&quot; secure=&quot;true&quot;
+           clientAuth=&quot;false&quot; sslProtocol=&quot;TLS&quot; 
+           keystoreFile=&quot;/usr/ca/tomcat.keystore&quot; keystorePass=&quot;your password&quot;/&gt;
+</code></pre><p>这步操作之后就可以使用https和8443端口访问你的web服务器了</p>
+<p>如果要想要隐藏端口，则将server.xml中所有的8443端口改为443端口</p>
+<h3 id="3-将http都转发到https"><a href="#3-将http都转发到https" class="headerlink" title="3.将http都转发到https"></a>3.将http都转发到https</h3><p>进入tomcat的conf目录，编辑web.xml,添加下面的代码</p>
+<pre><code>&lt;security-constraint&gt;
+&lt;web-resource-collection &gt;
+          &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;
+          &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+   &lt;/web-resource-collection&gt;                             
+   &lt;user-data-constraint&gt;
+   &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
+   &lt;/user-data-constraint&gt;
+&lt;/security-constraint&gt;
+</code></pre><p>你的http访问都会转发到https</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-git创建分支并设置文件忽略规则" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -833,74 +936,6 @@
       
         <p class="article-more-link">
           <a href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Vitamio使用问题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/18/Vitamio使用问题总结/" class="article-date">
-      <time datetime="2017-02-17T21:52:22.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              最近公司项目要加视频播放功能，查了一些资料，也踩了不少坑，终于搞定。写到博客里，希望能帮到一些人。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发中的坑/">开发中的坑</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vitamio/">Vitamio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频播放/">视频播放</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/02/18/Vitamio使用问题总结/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
