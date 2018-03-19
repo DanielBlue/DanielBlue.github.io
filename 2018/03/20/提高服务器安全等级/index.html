@@ -15,12 +15,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Maoqi's Blog">
-<meta property="og:url" content="https://danielblue.github.io/archives/2018/02/index.html">
+<meta name="description" content="提高服务器安全等级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提高服务器安全等级">
+<meta property="og:url" content="https://danielblue.github.io/2018/03/20/提高服务器安全等级/index.html">
 <meta property="og:site_name" content="Maoqi's Blog">
+<meta property="og:description" content="提高服务器安全等级">
+<meta property="og:updated_time" content="2018-03-19T11:47:52.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maoqi's Blog">
+<meta name="twitter:title" content="提高服务器安全等级">
+<meta name="twitter:description" content="提高服务器安全等级">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2018/2 | Maoqi&#39;s Blog</title>
+<title>提高服务器安全等级 | Maoqi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -240,56 +244,174 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-提高服务器安全等级" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/27/让本地Tomcat支持Https访问/" class="archive-article-date">
-      <time datetime="2018-02-26T19:25:59.000Z" itemprop="datePublished">02-26</time>
+    <div class="article-meta">
+      <a href="/2018/03/20/提高服务器安全等级/" class="article-date">
+      <time datetime="2018-03-19T19:46:20.000Z" itemprop="datePublished">2018-03-19</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/27/让本地Tomcat支持Https访问/">让本地Tomcat支持Https访问</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      提高服务器安全等级
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/">JavaWeb</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="1-修改ssh默认的22端口"><a href="#1-修改ssh默认的22端口" class="headerlink" title="1.修改ssh默认的22端口"></a>1.修改ssh默认的22端口</h3><pre><code># vi /etc/ssh/ssh_config
+# vi /etc/ssh/sshd_config
+
+编辑这两个文件，找到Port 22，改成你想设置的端口，保存
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="2-禁用root直接登录"><a href="#2-禁用root直接登录" class="headerlink" title="2.禁用root直接登录"></a>2.禁用root直接登录</h3><pre><code># vi /etc/ssh/sshd_config
+找到 #PermitRootLogin yes，去掉注释，yes改为no，保存
+
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="3-使用普通用户登录获得root权限"><a href="#3-使用普通用户登录获得root权限" class="headerlink" title="3.使用普通用户登录获得root权限"></a>3.使用普通用户登录获得root权限</h3><pre><code>添加普通用户
+# useradd username(这里是你要设置的用户名)
+# passwd username(这里是你要设置的用户密码)
+
+设置完之后就可以使用你的用户名和密码进行登录
+
+普通用户如何获得管理员权限
+# su root
+然后输入root密码即可
+</code></pre><h3 id="4-禁用密码登录，使用rsa公钥登录"><a href="#4-禁用密码登录，使用rsa公钥登录" class="headerlink" title="4.禁用密码登录，使用rsa公钥登录"></a>4.禁用密码登录，使用rsa公钥登录</h3><pre><code>ssh-keygen  生成密钥对
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/username/.ssh/id_rsa): &lt;== Enter
+Created directory &apos;/home/username/.ssh&apos;.
+Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，或直接按 Enter 留空
+Enter same passphrase again: &lt;== 再输入一遍密钥锁码
+创建成功
+
+安装公钥
+cd .ssh
+cat id_rsa.pub &gt;&gt; authorized_keys
+
+修改配置，禁用密码登录，使用rsa公钥登录
+
+# vi /etc/ssh/sshd_config
+
+找到并修改为
+
+//开启rsa登录
+RSAAuthentication yes
+PubkeyAuthentication yes
+//禁用密码登录
+PasswordAuthentication no
+
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="5-使用DenyHosts将常用ip加入白名单"><a href="#5-使用DenyHosts将常用ip加入白名单" class="headerlink" title="5.使用DenyHosts将常用ip加入白名单"></a>5.使用DenyHosts将常用ip加入白名单</h3><pre><code># vi /etc/hosts.allow
+在文件中添加
+sshd:ip(你要加入白名单的IP地址)  
+保存
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/02/27/让本地Tomcat支持Https访问/">
+                    让本地Tomcat支持Https访问
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修改ssh默认的22端口"><span class="toc-number">1.</span> <span class="toc-text">1.修改ssh默认的22端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-禁用root直接登录"><span class="toc-number">2.</span> <span class="toc-text">2.禁用root直接登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用普通用户登录获得root权限"><span class="toc-number">3.</span> <span class="toc-text">3.使用普通用户登录获得root权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-禁用密码登录，使用rsa公钥登录"><span class="toc-number">4.</span> <span class="toc-text">4.禁用密码登录，使用rsa公钥登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用DenyHosts将常用ip加入白名单"><span class="toc-number">5.</span> <span class="toc-text">5.使用DenyHosts将常用ip加入白名单</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/02/27/让本地Tomcat支持Https访问/" title="下一篇: 让本地Tomcat支持Https访问">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/提高服务器安全等级/">提高服务器安全等级</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/27/让本地Tomcat支持Https访问/">让本地Tomcat支持Https访问</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/21/git创建分支并设置文件忽略规则/">git创建分支并设置文件忽略规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/Centos-6.5安装mysql-5.6/">Centos-6.5安装mysql-5.6</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/Android文件操作的内部存储和外部存储/">Android文件操作的内部存储和外部存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/安装ubuntu16.04后的一些设置/">安装ubuntu16.04后的一些设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/Ubuntu下配置Android开发环境/">Ubuntu下配置Android开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/Android开发相关实用工具/">Android Stduio实用插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/AndroidAnnotation注解框架的配置/">AndroidAnnotation注解框架的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/git相关操作/">git相关操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/华为6.0的WRITE-SETTING权限问题/">华为6.0的WRITE_SETTING权限问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/Vitamio使用问题总结/">Vitamio使用问题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/18/RecycleView点击事件错位的问题/">RecycleView点击事件错位的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

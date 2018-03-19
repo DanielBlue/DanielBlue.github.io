@@ -4,6 +4,71 @@
   
     
     <entry>
+      <title><![CDATA[提高服务器安全等级]]></title>
+      <url>https://danielblue.github.io/2018/03/20/%E6%8F%90%E9%AB%98%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%AD%89%E7%BA%A7/</url>
+      <content type="html"><![CDATA[<h3 id="1-修改ssh默认的22端口"><a href="#1-修改ssh默认的22端口" class="headerlink" title="1.修改ssh默认的22端口"></a>1.修改ssh默认的22端口</h3><pre><code># vi /etc/ssh/ssh_config
+# vi /etc/ssh/sshd_config
+
+编辑这两个文件，找到Port 22，改成你想设置的端口，保存
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="2-禁用root直接登录"><a href="#2-禁用root直接登录" class="headerlink" title="2.禁用root直接登录"></a>2.禁用root直接登录</h3><pre><code># vi /etc/ssh/sshd_config
+找到 #PermitRootLogin yes，去掉注释，yes改为no，保存
+
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="3-使用普通用户登录获得root权限"><a href="#3-使用普通用户登录获得root权限" class="headerlink" title="3.使用普通用户登录获得root权限"></a>3.使用普通用户登录获得root权限</h3><pre><code>添加普通用户
+# useradd username(这里是你要设置的用户名)
+# passwd username(这里是你要设置的用户密码)
+
+设置完之后就可以使用你的用户名和密码进行登录
+
+普通用户如何获得管理员权限
+# su root
+然后输入root密码即可
+</code></pre><h3 id="4-禁用密码登录，使用rsa公钥登录"><a href="#4-禁用密码登录，使用rsa公钥登录" class="headerlink" title="4.禁用密码登录，使用rsa公钥登录"></a>4.禁用密码登录，使用rsa公钥登录</h3><pre><code>ssh-keygen  生成密钥对
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/username/.ssh/id_rsa): &lt;== Enter
+Created directory &apos;/home/username/.ssh&apos;.
+Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，或直接按 Enter 留空
+Enter same passphrase again: &lt;== 再输入一遍密钥锁码
+创建成功
+
+安装公钥
+cd .ssh
+cat id_rsa.pub &gt;&gt; authorized_keys
+
+修改配置，禁用密码登录，使用rsa公钥登录
+
+# vi /etc/ssh/sshd_config
+
+找到并修改为
+
+//开启rsa登录
+RSAAuthentication yes
+PubkeyAuthentication yes
+//禁用密码登录
+PasswordAuthentication no
+
+重启sshd服务生效
+# service sshd restart
+</code></pre><h3 id="5-使用DenyHosts将常用ip加入白名单"><a href="#5-使用DenyHosts将常用ip加入白名单" class="headerlink" title="5.使用DenyHosts将常用ip加入白名单"></a>5.使用DenyHosts将常用ip加入白名单</h3><pre><code># vi /etc/hosts.allow
+在文件中添加
+sshd:ip(你要加入白名单的IP地址)  
+保存
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> JavaWeb </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[让本地Tomcat支持Https访问]]></title>
       <url>https://danielblue.github.io/2018/02/27/%E8%AE%A9%E6%9C%AC%E5%9C%B0Tomcat%E6%94%AF%E6%8C%81Https%E8%AE%BF%E9%97%AE/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近弄淘宝代购系统，淘宝是https，我的服务器是http，chrome的安全策略会导致在淘宝页面使用ajax请求我的服务器时会出现&quot;加载不安全的脚本&quot;弹框，体验效果极差，遂查了下资料，则将自己的也升级为https
